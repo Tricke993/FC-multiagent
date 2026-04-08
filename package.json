@@ -1,0 +1,47 @@
+{
+  "name": "fc-connect",
+  "version": "0.1.0",
+  "description": "飞书 × Claude Code 桥接服务，支持多 Agent 编排",
+  "main": "dist/index.js",
+  "bin": {
+    "fc-connect": "dist/cli/index.js"
+  },
+  "files": [
+    "dist/",
+    "config.example.toml",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node src/cli/index.ts",
+    "start": "node dist/cli/index.js",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "feishu",
+    "lark",
+    "claude",
+    "claude-code",
+    "agent",
+    "multi-agent",
+    "orchestration",
+    "chatbot"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@larksuiteoapi/node-sdk": "^1.38.0",
+    "commander": "^12.0.0",
+    "toml": "^3.0.0",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/ws": "^8.5.10",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.4.0"
+  }
+}

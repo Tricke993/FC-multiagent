@@ -1,0 +1,35 @@
+# FC-CONNECT 配置文件示例
+# 将此文件复制到 ~/.fc-connect/config.toml 并填写你的信息
+# 或者直接运行 fc-connect init 通过引导向导生成
+
+[feishu]
+# 飞书应用的 App ID（在飞书开放平台创建应用后获取）
+app_id = "cli_xxxxxxxxxxxxxxxx"
+
+# 飞书应用的 App Secret（在飞书开放平台获取，请妥善保管）
+app_secret = "your_app_secret_here"
+
+[claude]
+# Claude Code 可执行命令
+# 标准安装：claude
+# 自定义封装（如解决认证问题）：ept claude
+bin = "claude"
+
+# Claude 工作目录（Claude 执行任务时的默认目录）
+work_dir = "~"
+
+[server]
+# 数据存储目录（会话文件、Agent 注册表等）
+data_dir = "~/.fc-connect"
+
+# 日志级别：debug / info / warn / error
+log_level = "info"
+
+# ── 多 Agent 编排（可选）────────────────────────────────────────────────
+# 如果不需要多 Agent 功能，删除此节或将 script 留空即可
+
+[orchestration]
+# orchestrate.js 脚本路径（多 Agent 编排引擎）
+# 留空 = 禁用，每条消息直接由本机 Claude 处理
+# 填路径 = 启用，Orchestrator 自主协调多个 Agent
+script = ""
