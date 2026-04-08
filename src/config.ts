@@ -44,7 +44,7 @@ export const DEFAULT_CONFIG_DIR = path.join(os.homedir(), '.fc-connect');
 export const DEFAULT_CONFIG_PATH = path.join(DEFAULT_CONFIG_DIR, 'config.toml');
 
 export function loadConfig(configPath?: string): AppConfig {
-  const filePath = configPath || DEFAULT_CONFIG_PATH;
+  const filePath = expandHome(configPath || DEFAULT_CONFIG_PATH);
 
   if (!fs.existsSync(filePath)) {
     throw new Error(`配置文件不存在: ${filePath}\n请先运行 fc-connect init 进行初始化`);
@@ -81,7 +81,7 @@ export function loadConfig(configPath?: string): AppConfig {
 }
 
 export function saveConfig(config: AppConfig, configPath?: string): void {
-  const filePath = configPath || DEFAULT_CONFIG_PATH;
+  const filePath = expandHome(configPath || DEFAULT_CONFIG_PATH);
   const dir = path.dirname(filePath);
 
   if (!fs.existsSync(dir)) {
