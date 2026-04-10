@@ -29,19 +29,39 @@ FC-CONNECT 的核心特点：
 
 ## 安装
 
-### 方式一：从 GitHub 克隆（推荐开发者使用）
+### 安装前环境检查（重要）
+
+**如果你在用 Claude Code 帮你安装，请让它先执行以下检查，确认环境正常后再安装。**
 
 ```bash
-git clone https://github.com/your-username/fc-connect.git
-cd fc-connect
-npm install
-npm run build
+# 1. 检查 Node.js 版本（需要 18+）
+node --version
+
+# 2. 检查 npm 是否正常
+npm --version
+
+# 3. 仅限 Windows：检查 npm 能否正常调用 cmd（这是最常见的报错根源）
+npm config get cache
 ```
 
-### 方式二：npm 全局安装（发布后可用）
+如果第 3 步报错 `ENOENT` 或 `spawn cmd.exe`，说明 Node.js 没有通过官方安装包安装，需要先从 [nodejs.org](https://nodejs.org) 重新安装 Node.js LTS 版本，然后再继续。
+
+---
+
+### 安装命令
 
 ```bash
-npm install -g @your-scope/fc-connect
+npm install -g github:Tricke993/FC-multiagent --ignore-scripts
+```
+
+> **为什么加 `--ignore-scripts`？**
+> 依赖包 `@larksuiteoapi/node-sdk` 内部的 `protobufjs` 在部分 Windows 环境下执行 postinstall 脚本时会失败，加上此参数可跳过。
+> 本包编译产物已预先打包进仓库，`--ignore-scripts` 不影响任何功能。
+
+### 验证安装成功
+
+```bash
+fc-connect --version
 ```
 
 ---
