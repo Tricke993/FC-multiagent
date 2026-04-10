@@ -1,9 +1,6 @@
 # 依赖包（npm install 自动生成，不需要提交）
 node_modules/
 
-# 编译产物（npm run build 自动生成）
-dist/
-
 # 用户数据目录（每个人自己的配置和会话，不能共享）
 .fc-connect/
 

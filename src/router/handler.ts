@@ -66,6 +66,7 @@ export class MessageRouter {
     }
 
     logger.info(`[${msg.chatId}] 处理消息: ${msg.content.slice(0, 60)}...`);
+    logger.info(`[debug] threadId="${msg.threadId}" rootId="${msg.rootId}" hasAgents=${this.hasAgents()} script="${this.orchestrateScript.slice(0, 30)}" content="${msg.content.slice(0, 60)}"`);
 
     // 立即添加"稍等"表情，告知用户正在处理
     const reactionId = await this.feishu.addReaction(msg.messageId, 'OneSecond');
@@ -115,6 +116,7 @@ export class MessageRouter {
     ], {
       detached: true,
       stdio: 'ignore',
+      windowsHide: true,
     });
     child.unref();
   }
